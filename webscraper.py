@@ -15,11 +15,15 @@ def startUp(driver):
     loginButton2 = driver.find_element(By.XPATH, '//*[@id="next"]')
     loginButton2.click()
     time.sleep(5)
-    productSwitcher = driver.find_element(By.CSS_SELECTOR, 'em.icon.wide')
-    productSwitcher.click()
-    pgButton = driver.find_element(By.XPATH, '//*[@id="1000522"]')
-    pgButton.click()
-    driver.find_element(By.CSS_SELECTOR, 'i.icon.la-CloseRemove.close-btn').click()
+    try:
+        productSwitcher = driver.find_element(By.CSS_SELECTOR, 'em.icon.wide')
+        productSwitcher.click()
+    except:
+        print("Login failed.")
+    else:
+        pgButton = driver.find_element(By.XPATH, '//*[@id="1000522"]')
+        pgButton.click()
+        driver.find_element(By.CSS_SELECTOR, 'i.icon.la-CloseRemove.close-btn').click()
 
 def inputDocId(driver, docid):
     searchField = driver.find_element(By.XPATH, '//*[@id="searchTerms"]')
